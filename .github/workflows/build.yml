@@ -17,7 +17,7 @@ jobs:
         with:
           root_file: main.tex
           working_directory: cv
-          args: -pdf -output-directory=../../out -interaction=nonstopmode
+          args: -pdf -f -output-directory=../../out -interaction=nonstopmode
           extra_system_packages: "font-roboto"
 
       - uses: actions/upload-artifact@v4

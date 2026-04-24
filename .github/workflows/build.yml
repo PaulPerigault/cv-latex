@@ -1,0 +1,36 @@
+name: Build CV
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv/main.tex
+          working_directory: .
+          args: -pdf -output-directory=../out -interaction=nonstopmode
+          extra_system_packages: "font-roboto"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CV_Paul_Perigault
+          path: out/main.pdf
+          retention-days: 30
+
+      - name: Commit PDF
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add out/main.pdf
+          git diff --staged --quiet || git commit -m "ci: update compiled cv pdf"
+          git push

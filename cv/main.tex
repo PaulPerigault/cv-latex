@@ -1,9 +1,8 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,10pt]{article}
 
-% Configuration de la page
-\usepackage[top=1cm, bottom=1cm, left=1.4cm, right=1.4cm]{geometry}
+\usepackage[top=1cm, bottom=1.5cm, left=1.4cm, right=1.4cm]{geometry}
 \usepackage{fontawesome5}
-\usepackage{xcolor}
+\usepackage[dvipsnames,svgnames,x11names]{xcolor}
 \usepackage{multicol}
 \usepackage{enumitem}
 \usepackage{graphicx}
@@ -11,52 +10,44 @@
 \usepackage{titlesec}
 \usepackage{parskip}
 \usepackage{tikz}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[sfdefault]{roboto}
 
-% Couleurs personnalisées
-\definecolor{mainblue}{RGB}{30, 144, 255}
-\definecolor{darkgray}{RGB}{50, 50, 50}
+\definecolor{accent}{RGB}{13, 148, 136}
+\definecolor{dark}{RGB}{30, 30, 30}
+\definecolor{muted}{RGB}{100, 100, 100}
+\definecolor{light}{RGB}{245, 245, 245}
 
-% Configuration des hyperliens
-\hypersetup{
-    colorlinks=true,
-    linkcolor=darkgray,
-    filecolor=mainblue,
-    urlcolor=mainblue,
-}
+\hypersetup{colorlinks=true,urlcolor=accent,linkcolor=dark}
 
-% Style des sections
 \titleformat{\section}
-{\color{mainblue}\LARGE\bfseries}
-{}{0em}
-{}[\vspace{-0.1cm}]
-\titlespacing{\section}{0pt}{0.6cm}{0.3cm}
+  {\color{accent}\large\bfseries}{}{0em}{}
+  [\vspace{2pt}\color{accent}\titlerule\vspace{2pt}]
+\titlespacing{\section}{0pt}{8pt}{4pt}
 
-% Configuration des listes
 \setlist{nosep}
-\setlist[itemize]{leftmargin=*,label={\small\textcolor{mainblue}{▸}},itemsep=2pt}
+\setlist[itemize]{leftmargin=1em,label={\footnotesize\textcolor{accent}{>}},itemsep=6pt,parsep=0pt}
 
-% Commandes personnalisées pour les icônes
-\newcommand{\icon}[1]{\textcolor{mainblue}{#1}\hspace{0.3em}}
+\newcommand{\icon}[1]{\textcolor{accent}{#1}\hspace{0.25em}}
 
-% Suppression des marges de paragraphe
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.3em}
-
-% Configuration des colonnes
-\setlength{\columnsep}{1cm}
+\setlength{\parskip}{2pt}
+\setlength{\columnsep}{0.8cm}
 
 \begin{document}
-    \pagestyle{empty}
-    \input{sections/header}
-    \vspace{0.2cm}
-    \input{sections/experience}
-    \vspace{0.2cm}
-    \input{sections/education}
-    \vspace{0.2cm}
-    \input{sections/skills}
-    \vspace{0.2cm}
-    \input{sections/certifications}
-    \vspace{0.2cm}
-    \input{sections/languages}
+\pagestyle{empty}
+\input{sections/header}
+\vspace{0.25cm}
+\input{sections/profile}
+\input{sections/experience}
+\vspace{0.25cm}
+\input{sections/education}
+\vspace{0.25cm}
+\input{sections/skills}
+\vspace{0.25cm}
+\input{sections/certifications}
+\vspace{0.25cm}
+\input{sections/languages}
 \end{document}

@@ -15,9 +15,9 @@ jobs:
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: cv/main.tex
-          working_directory: .
-          args: -pdf -output-directory=../out -interaction=nonstopmode
+          root_file: main.tex
+          working_directory: cv
+          args: -pdf -output-directory=../../out -interaction=nonstopmode
           extra_system_packages: "font-roboto"
 
       - uses: actions/upload-artifact@v4
